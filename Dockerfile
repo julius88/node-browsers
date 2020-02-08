@@ -5,7 +5,8 @@ RUN yum -y update && \
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash && \
     curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo && \
-    yum install -y nodejs yarn unzip wget bzip2
+    rpm -U http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-2.noarch.rpm && \
+    yum install -y nodejs yarn unzip wget bzip2 git
 
 RUN yum install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
     CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
