@@ -1,9 +1,12 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
+
+ENV TZ=UTC
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt update -y && \
 	apt upgrade -y && \
 	apt install -y wget gnupg git curl build-essential && \
-	curl --silent --location https://deb.nodesource.com/setup_10.x | bash && \
+	curl --silent --location https://deb.nodesource.com/setup_12.x | bash && \
 	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \	
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
