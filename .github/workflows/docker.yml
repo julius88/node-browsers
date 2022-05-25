@@ -73,7 +73,7 @@ jobs:
           file: Dockerfile
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}:${{ steps.date.outputs.date }}-${{github.sha}},${{ env.REGISTRY }}/${{ github.repository }}:${{ steps.date.outputs.date }},${{ env.REGISTRY }}/${{ github.repository }}:${{ matrix.node_version }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}:${{ matrix.node_version }}-${{ steps.date.outputs.date }}-${{github.sha}},${{ env.REGISTRY }}/${{ github.repository }}:${{ matrix.node_version }}-${{ steps.date.outputs.date }},${{ env.REGISTRY }}/${{ github.repository }}:${{ matrix.node_version }}
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64
           build-args: NODE_VERSION=${{ matrix.node_version }}
