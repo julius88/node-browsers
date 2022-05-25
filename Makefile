@@ -15,8 +15,9 @@ build: ## Build Docker image and push it to Docker Hub.
 	docker buildx use ci-helper
 	docker buildx build \
     	--platform linux/amd64 \
-    	--cache-from=type=registry,ref=juliusleppala/node-browsers:latest-cache \
-    	--cache-to=type=registry,ref=juliusleppala/node-browsers:latest-cache,mode=max \
-      	-t juliusleppala/node-browsers:latest \
+    	--build-arg NODE_VERSION=$(NODE_VERSION) \
+    	--cache-from=type=registry,ref=juliusleppala/node-browsers:$(NODE_VERSION)-cache \
+    	--cache-to=type=registry,ref=juliusleppala/node-browsers:$(NODE_VERSION)-cache,mode=max \
+      	-t juliusleppala/node-browsers:$(NODE_VERSION) \
       	--push \
       	.
