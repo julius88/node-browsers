@@ -12,7 +12,7 @@ RUN apt install -y wget gnupg git curl build-essential unzip wget bzip2 && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
 
-RUN apt update -y && apt install -y firefox google-chrome-stable nodejs python3-dev python2-dev && \
+RUN apt update -y && apt install -y firefox google-chrome-stable nodejs && \
     npm install -g npm && \
     npm install --global yarn && \
     rm -rf /var/lib/apt/lists/* && \
